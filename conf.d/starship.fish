@@ -5,7 +5,7 @@ end
 set -g VIRTUAL_ENV_DISABLE_PROMPT 1
 
 set -g STARSHIP_SHELL fish
-set -g STARSHIP_SESSION_KEY (random 10000000000000 9999999999999999)
+set -gx STARSHIP_SESSION_KEY (random 10000000000000 9999999999999999)
 set -g __starship_transient 0
 
 function __starship_maybe_execute
@@ -53,11 +53,11 @@ function fish_prompt
     if test $__starship_transient -eq 1
         printf '\e[0J'
         starship prompt --profile transient \
-            --terminal-width="$COLUMNS" --status=$STARSHIP_CMD_STATUS  \
+            --terminal-width="$COLUMNS" --status=$STARSHIP_CMD_STATUS \
             --pipestatus="$STARSHIP_CMD_PIPESTATUS" --keymap=$STARSHIP_KEYMAP \
             --cmd-duration=$STARSHIP_DURATION --jobs=$STARSHIP_JOBS
     else
-        starship prompt --terminal-width="$COLUMNS" --status=$STARSHIP_CMD_STATUS  \
+        starship prompt --terminal-width="$COLUMNS" --status=$STARSHIP_CMD_STATUS \
             --pipestatus="$STARSHIP_CMD_PIPESTATUS" --keymap=$STARSHIP_KEYMAP \
             --cmd-duration=$STARSHIP_DURATION --jobs=$STARSHIP_JOBS
     end
@@ -65,6 +65,6 @@ end
 
 builtin functions -e fish_mode_prompt
 
-bind --user \r  __starship_maybe_execute
+bind --user \r __starship_maybe_execute
 bind --user \cc __starship_cancel_commandline
 bind --user \cj __starship_maybe_execute
