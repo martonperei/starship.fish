@@ -18,6 +18,10 @@ $character
 """
 ```
 
+## Screenshots
+
+<img width="477" alt="image" src="https://github.com/martonperei/starship.fish/assets/5266196/6cabaef8-a425-46f1-b973-4052df05261f">
+
 ## Acknowledgments
 
 - [zzhaolei/transient.fish][] - Used as a base to improve starship's transient rendering
