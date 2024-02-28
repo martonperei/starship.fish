@@ -11,8 +11,8 @@ set -g __starship_transient 0
 function __starship_maybe_execute
     commandline --is-valid
     if test $status -eq 2
-        or commandline --paging-full-mode
-        commandline -f execute
+        or commandline --paging-full
+        commandline --function accept-autosuggestion
         return 0
     end
     set -g __starship_transient 1
@@ -21,11 +21,11 @@ end
 
 function __starship_cancel_commandline
     set -g __starship_transient 1
-    if test (commandline --current-buffer) = ""
+    if test "$(commandline --current-buffer)" = ""
         commandline -f repaint execute
         return 0
     end
-    commandline -f repaint cancel-commandline
+    commandline -f repaint cancel-commandline kill-inner-line repaint-mode repaint
 end
 
 function __starship_prompt_event --on-event fish_prompt
