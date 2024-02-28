@@ -1,5 +1,5 @@
 # starship.fish
-Improved hooks for starship for Fish shell, with transient prompt.
+Simplified hooks for starship for Fish shell, with transient prompt.
 
 ## Installation
 
